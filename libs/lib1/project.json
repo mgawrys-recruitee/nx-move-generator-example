@@ -1,0 +1,9 @@
+{
+  "name": "lib1",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/lib1/src",
+  "prefix": "nx-move",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}
