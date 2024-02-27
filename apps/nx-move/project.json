@@ -1,0 +1,65 @@
+{
+  "name": "nx-move",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "nx-move",
+  "sourceRoot": "apps/nx-move/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nx-move",
+        "index": "apps/nx-move/src/index.html",
+        "browser": "apps/nx-move/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/nx-move/tsconfig.app.json",
+        "assets": ["apps/nx-move/src/favicon.ico", "apps/nx-move/src/assets"],
+        "styles": ["apps/nx-move/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "nx-move:build:production"
+        },
+        "development": {
+          "buildTarget": "nx-move:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "nx-move:build"
+      }
+    }
+  }
+}
